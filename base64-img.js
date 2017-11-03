@@ -67,11 +67,9 @@ exports.base64Sync = function(filename) {
  *   }
  * );
  */
-exports.requestBase64 = function(url, callback) {
-  request({
-    url: url,
-    isBuffer: true
-  }, function (err, res, body) {
+exports.requestBase64 = function(requestOptions, callback) {
+  const requestOptions = Object.assign({isBuffer : true}, requestOptions)
+  request(requestOptions, function (err, res, body) {
     if (err) return callback(err);
 
     var data = 'data:' + res.headers['content-type'] + ';base64,' + body.toString('base64');

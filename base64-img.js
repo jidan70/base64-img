@@ -67,7 +67,7 @@ exports.base64Sync = function(filename) {
  *   }
  * );
  */
-exports.requestBase64 = function(requestOptions, callback) {
+const requestBase64 = function(requestOptions, callback) {
   const reqOptions = Object.assign({isBuffer : true}, requestOptions)
   request(reqOptions, function (err, res, body) {
     if (err) return callback(err);
@@ -76,6 +76,17 @@ exports.requestBase64 = function(requestOptions, callback) {
     callback(err, res, data);
   });
 };
+
+exports.requestBase64 = function(requestOptions) {
+  let p = new Promise((resolve, reject) => {
+    requestBase64(requestOptions, (err, res, data) => {
+      if (err) reject(err)
+      else resolve({data, res})
+    })
+  })
+  
+  return p
+}
 
 /**
  * @description

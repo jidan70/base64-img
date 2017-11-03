@@ -28,13 +28,13 @@ The api same as base64, but it's synchronous
 var data = base64Img.base64Sync('path/demo.png');
 ```
 
-### .requestBase64(url, callback)
-* {string} ``url`` required
+### .requestBase64(requestOptions, callback)
+* {Object} ``requestOptions`` required
 * {function} ``callback(err, res, body)`` required  
 Callback with http request
 ```js
 var url = 'http://../demo.png';
-base64Img.requestBase64(url, function(err, res, body) {
+base64Img.requestBase64({url, headers : {authorization : "....."}}, function(err, res, body) {
   
 });
 ```

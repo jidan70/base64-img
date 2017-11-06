@@ -28,7 +28,7 @@ The api same as base64, but it's synchronous
 var data = base64Img.base64Sync('path/demo.png');
 ```
 
-### .requestBase64(requestOptions, callback)
+### .requestBase64(requestOptions)
 * {Object} ``requestOptions`` required
 
 ```js

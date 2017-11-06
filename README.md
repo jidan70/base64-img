@@ -30,13 +30,18 @@ var data = base64Img.base64Sync('path/demo.png');
 
 ### .requestBase64(requestOptions, callback)
 * {Object} ``requestOptions`` required
-* {function} ``callback(err, res, body)`` required  
-Callback with http request
+
 ```js
 var url = 'http://../demo.png';
-base64Img.requestBase64({url, headers : {authorization : "....."}}, function(err, res, body) {
-  
-});
+base64Img.requestBase64({
+  url,
+  headers : {authorization : "....."}
+})
+.then(resp => {
+  console.log(resp.data)
+  console.log(resp.body)
+})
+.catch(e => console.log(e));
 ```
 
 ### .img(data, destpath, name, callback)
